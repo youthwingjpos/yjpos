@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youth Wing - Jaitaran Pattu Oswal Sangh</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: #0f172a;
+            min-height: 100vh;
+            padding: 40px 20px;
+            position: relative;
+            color: #e2e8f0;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(251, 146, 60, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(251, 146, 60, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .org-name {
+            font-size: 0.85em;
+            color: #fb923c;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.5em;
+            color: #f8fafc;
+            margin-bottom: 15px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            color: #cbd5e1;
+            font-size: 1.05em;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .leadership {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .leadership-title {
+            color: #fb923c;
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 0.95em;
+        }
+
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            font-size: 0.9em;
+        }
+
+        .leader {
+            color: #cbd5e1;
+        }
+
+        .leader-title {
+            color: #94a3b8;
+            font-size: 0.85em;
+        }
+
+        .contact-support {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-top: 15px;
+            text-align: center;
+            font-size: 0.95em;
+        }
+
+        .contact-number {
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-top: 5px;
+            letter-spacing: 1px;
+        }
+
+        .form-card {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 50px 45px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-message, .error-message {
+            padding: 25px;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 25px;
+            display: none;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        .success-message {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+
+        .error-message {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+        }
+
+        .success-message.show, .error-message.show {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-header {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5em;
+            color: #fb923c;
+            margin: 35px 0 20px 0;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(251, 146, 60, 0.3);
+            font-weight: 600;
+        }
+
+        .section-header:first-of-type {
+            margin-top: 0;
+        }
+
+        .member-id-section {
+            background: rgba(251, 146, 60, 0.1);
+            padding: 25px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(251, 146, 60, 0.3);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #e2e8f0;
+            font-size: 0.95em;
+        }
+
+        label .required {
+            color: #fb923c;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="file"],
+        input[type="date"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            font-size: 1em;
+            font-family: 'Manrope', sans-serif;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+            color: #f1f5f9;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="date"]:focus,
+        input[type="number"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #fb923c;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 3px rgba(251, 146, 60, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        select option {
+            background: #1e293b;
+            color: #f1f5f9;
+        }
+
+        .help-text {
+            font-size: 0.85em;
+            color: #94a3b8;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .radio-item input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            cursor: pointer;
+            accent-color: #fb923c;
+        }
+
+        .radio-item label {
+            margin: 0;
+            font-weight: 400;
+            cursor: pointer;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Manrope', sans-serif;
+            font-size: 1em;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(251, 146, 60, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(251, 146, 60, 0.5);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            margin-top: 30px;
+        }
+
+        .conditional-field {
+            display: none;
+        }
+
+        .conditional-field.show {
+            display: block;
+        }
+
+        .child-inputs {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .child-inputs.show {
+            display: block;
+        }
+
+        .child-entry {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .child-entry:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        .child-header {
+            color: #fb923c;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .photo-upload-section {
+            background: rgba(59, 130, 246, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .photo-preview {
+            margin-top: 15px;
+            display: none;
+        }
+
+        .photo-preview.show {
+            display: block;
+        }
+
+        .photo-preview img {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .form-card {
+                padding: 30px 25px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="org-name">YOUTH WING</div>
+            <h1>Jaitaran Pattu Oswal Sangh</h1>
+            <p class="subtitle">Member Registration Form</p>
+            
+            <div class="leadership">
+                <div class="leadership-title">Leadership Team</div>
+                <div class="leadership-grid">
+                    <div class="leader">
+                        <div class="leader-title">President</div>
+                        <strong>Vishaal Taleda</strong>
+                    </div>
+                    <div class="leader">
+                        <div class="leader-title">Secretary</div>
+                        <strong>Siddharth Bhansali</strong>
+                    </div>
+                    <div class="leader">
+                        <div class="leader-title">Treasurer</div>
+                        <strong>Deepak Pokarna</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-support">
+                <div>For Membership Support</div>
+                <div class="contact-number">📞 9710220344</div>
+            </div>
+        </div>
+
+        <div class="form-card">
+            <div class="success-message" id="successMessage">
+                <h2>✓ Registration Successful!</h2>
+                <p>Your profile has been saved successfully. Thank you for registering!</p>
+            </div>
+
+            <div class="error-message" id="errorMessage">
+                <h2>⚠ <span id="errorTitle">Error</span></h2>
+                <p id="errorText"></p>
+            </div>
+
+            <!-- Step 1: Enter Member ID -->
+            <div class="member-id-section">
+                <h3 style="color: #fb923c; margin-bottom: 15px;">🔍 Enter Your Member ID</h3>
+                <div class="form-group" style="margin-bottom: 0;">
+                    <label for="memberIdLookup">Member ID <span class="required">*</span></label>
+                    <input type="text" id="memberIdLookup" placeholder="e.g., 001, 002, 003">
+                    <div class="help-text">Provided in your welcome message</div>
+                </div>
+                <button class="btn btn-primary" style="margin-top: 15px;" onclick="lookupMember()">Look Up My Information</button>
+            </div>
+
+            <!-- Registration Form -->
+            <form id="memberForm">
+                <input type="hidden" id="memberId" name="memberId">
+                
+                <div class="section-header">📝 Complete Your Profile</div>
+
+                <!-- Photo Upload -->
+                <div class="photo-upload-section">
+                    <label for="photo">Upload Your Photo</label>
+                    <input type="file" id="photo" accept="image/*" onchange="previewPhoto(event)">
+                    <div class="help-text">Accepted formats: JPG, PNG (Max 2MB). Photo will be compressed before saving.</div>
+                    <div class="photo-preview" id="photoPreview">
+                        <img id="photoImg" src="" alt="Preview">
+                    </div>
+                </div>
+
+                <!-- Professional Information -->
+                <div class="section-header" style="font-size: 1.3em; margin-top: 35px; color: #fbbf24;">Professional Details</div>
+                
+                <div class="form-group full-width">
+                    <label for="skills">Professional Skills / Expertise <span class="required">*</span></label>
+                    <input type="text" id="skills" name="skills" required placeholder="e.g., Textile Business, Import/Export, Teaching">
+                    <div class="help-text">Enter skills separated by commas</div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="employmentType">Employment Type <span class="required">*</span></label>
+                    <select id="employmentType" name="employmentType" required onchange="toggleEmploymentFields()">
+                        <option value="">-- Select --</option>
+                        <option value="Job">Job</option>
+                        <option value="Business">Business</option>
+                        <option value="Self-Employed">Self-Employed</option>
+                        <option value="Student">Student</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <!-- Job Fields -->
+                <div class="form-grid conditional-field" id="jobFields">
+                    <div class="form-group">
+                        <label for="companyName">Company Name</label>
+                        <input type="text" id="companyName" name="companyName">
+                    </div>
+                    <div class="form-group">
+                        <label for="designation">Designation</label>
+                        <input type="text" id="designation" name="designation">
+                    </div>
+                </div>
+
+                <!-- Business Fields -->
+                <div class="conditional-field" id="businessFields">
+                    <div class="form-group">
+                        <label for="businessName">Business Name</label>
+                        <input type="text" id="businessName" name="businessName">
+                    </div>
+                    <div class="form-group">
+                        <label for="businessAddress">Business Address</label>
+                        <textarea id="businessAddress" name="businessAddress"></textarea>
+                    </div>
+                </div>
+
+                <!-- Personal Interests -->
+                <div class="section-header" style="font-size: 1.3em; margin-top: 35px; color: #fbbf24;">Personal Interests</div>
+                
+                <div class="form-group full-width">
+                    <label for="interests">Areas of Interest <span class="required">*</span></label>
+                    <input type="text" id="interests" name="interests" required placeholder="e.g., Community Service, Sports, Technology">
+                    <div class="help-text">Enter interests separated by commas</div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="hobbies">Hobbies <span class="required">*</span></label>
+                    <input type="text" id="hobbies" name="hobbies" required placeholder="e.g., Reading, Photography, Dancing, Singing">
+                    <div class="help-text">Enter hobbies separated by commas</div>
+                </div>
+
+                <!-- Social Media -->
+                <div class="section-header" style="font-size: 1.3em; margin-top: 35px; color: #fbbf24;">Social Media</div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="instagram">Instagram Handle</label>
+                        <input type="text" id="instagram" name="instagram" placeholder="@yourusername">
+                    </div>
+                    <div class="form-group">
+                        <label for="linkedin">LinkedIn Profile</label>
+                        <input type="text" id="linkedin" name="linkedin" placeholder="linkedin.com/in/yourprofile">
+                    </div>
+                </div>
+
+                <!-- Children Information (Only if Married) -->
+                <div class="section-header" style="font-size: 1.3em; margin-top: 35px; color: #fbbf24;">Family Information</div>
+                
+                <div class="form-group">
+                    <label>Do you have children?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="hasChildrenYes" name="hasChildren" value="Yes" onchange="toggleChildrenFields()">
+                            <label for="hasChildrenYes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="hasChildrenNo" name="hasChildren" value="No" onchange="toggleChildrenFields()">
+                            <label for="hasChildrenNo">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group conditional-field" id="childrenCountField">
+                    <label for="childrenCount">Number of Children</label>
+                    <input type="number" id="childrenCount" min="0" max="10" onchange="showChildInputs()">
+                </div>
+
+                <div class="child-inputs" id="childInputsContainer"></div>
+
+                <button type="submit" class="btn btn-primary submit-btn">Submit Registration</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        // GOOGLE SHEETS CONFIGURATION
+        // ============================================================
+        const MEMBER_DATA_SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS9LBv8dQbADv6EgZFhpcZM8Nw0xNA5w0wxZNwKBqewz4SSfnFk4vr9dq-mT36-IIKNRDO6q8RsqON-/pub?output=csv';
+        const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxDIY6lIKDqzWZkH3j8cjk3UF7RbMFnS66ETYda4W9LWqVMwt1hMU7KzJh3Ef9yZWMB/exec';
+        const ENABLE_GOOGLE_SHEETS = true;
+        // ============================================================
+
+        let savedData = null;
+        let memberDatabase = [];
+
+        // Load member data from Google Sheets
+        document.addEventListener('DOMContentLoaded', function() {
+            loadMemberDataFromGoogleSheets();
+        });
+
+        async function loadMemberDataFromGoogleSheets() {
+            if (MEMBER_DATA_SHEET_URL === 'PASTE_MEMBER_DATABASE_CSV_URL_HERE') {
+                showError('Database not configured. Please contact support at 9710220344', 'Configuration Error');
+                return;
+            }
+
+            try {
+                const response = await fetch(MEMBER_DATA_SHEET_URL);
+                if (!response.ok) throw new Error('Failed to load database');
+                
+                const csvText = await response.text();
+                parseMemberCSV(csvText);
+                
+                console.log('✓ Database loaded:', memberDatabase.length, 'members');
+                
+            } catch (error) {
+                console.error('Database error:', error);
+                showError('Failed to load database. Please refresh or contact support at 9710220344', 'Loading Error');
+            }
+        }
+
+        function parseMemberCSV(csv) {
+            try {
+                const lines = csv.trim().split('\n');
+                const headers = parseCSVLine(lines[0]);
+                memberDatabase = [];
+                
+                for (let i = 1; i < lines.length; i++) {
+                    if (!lines[i].trim()) continue;
+                    const values = parseCSVLine(lines[i]);
+                    const member = {};
+                    headers.forEach((header, index) => {
+                        member[header] = values[index] || '';
+                    });
+                    memberDatabase.push(member);
+                }
+            } catch (error) {
+                console.error('CSV parsing error:', error);
+            }
+        }
+
+        function parseCSVLine(line) {
+            const values = [];
+            let current = '';
+            let inQuotes = false;
+            
+            for (let i = 0; i < line.length; i++) {
+                const char = line[i];
+                if (char === '"') {
+                    if (inQuotes && line[i + 1] === '"') {
+                        current += '"';
+                        i++;
+                    } else {
+                        inQuotes = !inQuotes;
+                    }
+                } else if (char === ',' && !inQuotes) {
+                    values.push(current.trim());
+                    current = '';
+                } else {
+                    current += char;
+                }
+            }
+            values.push(current.trim());
+            return values;
+        }
+
+        function lookupMember() {
+            const memberIdInput = document.getElementById('memberIdLookup').value.trim();
+            
+            if (!memberIdInput) {
+                showError('Please enter your Member ID', 'ID Required');
+                return;
+            }
+
+            if (memberDatabase.length === 0) {
+                showError('Database not loaded. Please refresh the page or contact 9710220344', 'Database Error');
+                return;
+            }
+
+            const member = memberDatabase.find(m => {
+                const id = m['Member ID'] || m['member id'] || m['MemberID'];
+                return id && id.toString().trim() === memberIdInput;
+            });
+
+            if (!member) {
+                showError(`Member ID "${memberIdInput}" not found. Please verify your ID or contact 9710220344`, 'Not Found');
+                return;
+            }
+
+            displayMemberInfo(member);
+            document.getElementById('memberId').value = memberIdInput;
+        }
+
+        function displayMemberInfo(member) {
+            hideError();
+            
+            // Go directly to edit section with ALL fields
+            enableCompleteEdit(member);
+            
+            // Scroll to edit section
+            const editSection = document.getElementById('editBasicInfo');
+            if (editSection) {
+                editSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function enableCompleteEdit(member) {
+            // Remove any existing edit section
+            const existingEdit = document.getElementById('editBasicInfo');
+            if (existingEdit) existingEdit.remove();
+
+            const editSection = document.createElement('div');
+            editSection.id = 'editBasicInfo';
+            editSection.style.cssText = 'background: rgba(59, 130, 246, 0.1); padding: 30px; border-radius: 16px; margin-bottom: 30px; border: 1px solid rgba(59, 130, 246, 0.3); animation: fadeInUp 0.5s ease-out;';
+            
+            editSection.innerHTML = `
+                <div style="color: #3b82f6; font-weight: 600; margin-bottom: 15px; font-size: 1.3em;">✏️ Edit All Your Information</div>
+                <div style="color: #cbd5e1; font-size: 0.9em; margin-bottom: 25px;">
+                    Update any field below. All fields are editable. Leave blank to keep existing value.
+                </div>
+
+                <!-- Basic Information Section -->
+                <div style="color: #fbbf24; font-weight: 600; font-size: 1.1em; margin-top: 20px; margin-bottom: 15px; padding-bottom: 8px; border-bottom: 1px solid rgba(251, 191, 36, 0.3);">Personal Details</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                    <div>
+                        <label style="display: block; margin-bottom: 5px; font-size: 0.9em; color: #94a3b8;">Name</label>
+                        <input type="text" id="editName" style="width: 100%; padding: 10px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.05); color: #f1f5f9; font-family: 'Manrope', sans-serif;">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 5px; font-size: 0.9em; color: #94a3b8;">Gotra</label>
+                        <input type="text" id="editGotra" style="width: 100%; padding: 10px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.05); color: #f1f5f9; font-family: 'Manrope', sans-serif;">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 5px; font-size: 0.9em; color: #94a3b8;">Date of Birth</label>
+                        <input type="date" id="editDOB" style="width: 100%; padding: 10px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.05); color: #f1f5f9; font-family: 'Manrope', sans-serif;">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 5px; font-size: 0.9em; color: #94a3b8;">Place of Birth</label>
+                        <input type="text" id="editPlaceOfBirth" style="width: 100%; padding: 10px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.05); color: #f1f5f9; font-family: 'Manrope', sans-serif;">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 5px; font-size: 0.9em; color: #94a3b8;">Sex</label>
+                        <select id="editSex" style="width: 100%; padding: 10px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.05); color: #f1f5f9; font-family: 'Manrope', sans-serif;">
+                            <option value="">-- Select --</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 5px; font-size: 0.9em; color: #94a3b8;">Father's Name</label>
+                        <input type="text" id="editFatherName" style="width: 100%; padding: 10px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.05); color: #f1f5f9; font-family: 'Manrope', sans-serif;">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 5px; font-size: 0.9em; color: #94a3b8;">Native Place in Rajasthan</label>
+                        <input type="text" id="editNativePlace" style="width: 100%; padding: 10px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.05); color: #f1f5f9; font-family: 'Manrope', sans-serif;">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 5px; font-size: 0.9em; color: #94a3b8;">Educational Qualification</label>
+                        <input type="text" id="editEducation" style="width: 100%; padding: 10px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.05); color: #f1f5f9; font-family: 'Manrope', sans-serif;">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 5px; font-size: 0.9em; color: #94a3b8;">Occupation</label>
+                        <input type="text" id="editOccupation" style="width: 100%; padding: 10px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.05); color: #f1f5f9; font-family: 'Manrope', sans-serif;">
+                    </div>
+                </div>
+
+                <!-- Marital Status Section -->
+                <div style="color: #fbbf24; font-weight: 600; font-size: 1.1em; margin-top: 25px; margin-bottom: 15px; padding-bottom: 8px; border-bottom: 1px solid rgba(251, 191, 36, 0.3);">Marital Status & Family</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                    <div>
+                        <label style="display: block; margin-bottom: 5px; font-size: 0.9em; color: #94a3b8;">Marital Status</label>
+                        <select id="editMaritalStatus" style="width: 100%; padding: 10px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.05); color: #f1f5f9; font-family: 'Manrope', sans-serif;">
+                            <option value="">-- Select --</option>
+                            <option value="Married">Married</option>
+                            <option value="Unmarried">Unmarried</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 5px; font-size: 0.9em; color: #94a3b8;">Date of Marriage</label>
+                        <input type="date" id="editDateOfMarriage" style="width: 100%; padding: 10px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.05); color: #f1f5f9; font-family: 'Manrope', sans-serif;">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 5px; font-size: 0.9em; color: #94a3b8;">Spouse Name</label>
+                        <input type="text" id="editSpouseName" style="width: 100%; padding: 10px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.05); color: #f1f5f9; font-family: 'Manrope', sans-serif;">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 5px; font-size: 0.9em; color: #94a3b8;">Spouse Business/Profession</label>
+                        <input type="text" id="editSpouseBusiness" style="width: 100%; padding: 10px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.05); color: #f1f5f9; font-family: 'Manrope', sans-serif;">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 5px; font-size: 0.9em; color: #94a3b8;">Spouse Date of Birth</label>
+                        <input type="date" id="editSpouseDOB" style="width: 100%; padding: 10px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.05); color: #f1f5f9; font-family: 'Manrope', sans-serif;">
+                    </div>
+                </div>
+
+                <!-- Contact Information Section -->
+                <div style="color: #fbbf24; font-weight: 600; font-size: 1.1em; margin-top: 25px; margin-bottom: 15px; padding-bottom: 8px; border-bottom: 1px solid rgba(251, 191, 36, 0.3);">Contact Information</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                    <div>
+                        <label style="display: block; margin-bottom: 5px; font-size: 0.9em; color: #94a3b8;">WhatsApp Phone Number</label>
+                        <input type="text" id="editWhatsApp" style="width: 100%; padding: 10px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.05); color: #f1f5f9; font-family: 'Manrope', sans-serif;" placeholder="+91-XXXXXXXXXX">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 5px; font-size: 0.9em; color: #94a3b8;">Communication Email ID</label>
+                        <input type="email" id="editEmail" style="width: 100%; padding: 10px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.05); color: #f1f5f9; font-family: 'Manrope', sans-serif;" placeholder="your.email@example.com">
+                    </div>
+                </div>
+
+                <!-- Address Section -->
+                <div style="color: #fbbf24; font-weight: 600; font-size: 1.1em; margin-top: 25px; margin-bottom: 15px; padding-bottom: 8px; border-bottom: 1px solid rgba(251, 191, 36, 0.3);">Address Details</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                    <div style="grid-column: 1 / -1;">
+                        <label style="display: block; margin-bottom: 5px; font-size: 0.9em; color: #94a3b8;">Residential Address</label>
+                        <textarea id="editAddress" style="width: 100%; padding: 10px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.05); color: #f1f5f9; font-family: 'Manrope', sans-serif; min-height: 60px;" placeholder="Full address"></textarea>
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 5px; font-size: 0.9em; color: #94a3b8;">City</label>
+                        <input type="text" id="editCity" style="width: 100%; padding: 10px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.05); color: #f1f5f9; font-family: 'Manrope', sans-serif;">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 5px; font-size: 0.9em; color: #94a3b8;">State</label>
+                        <input type="text" id="editState" style="width: 100%; padding: 10px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.05); color: #f1f5f9; font-family: 'Manrope', sans-serif;">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 5px; font-size: 0.9em; color: #94a3b8;">Pincode</label>
+                        <input type="text" id="editPincode" style="width: 100%; padding: 10px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.05); color: #f1f5f9; font-family: 'Manrope', sans-serif;">
+                    </div>
+                </div>
+
+                <!-- Membership Section -->
+                <div style="color: #fbbf24; font-weight: 600; font-size: 1.1em; margin-top: 25px; margin-bottom: 15px; padding-bottom: 8px; border-bottom: 1px solid rgba(251, 191, 36, 0.3);">Membership Details</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                    <div style="grid-column: 1 / -1;">
+                        <label style="display: block; margin-bottom: 5px; font-size: 0.9em; color: #94a3b8;">Membership in Other Associations</label>
+                        <input type="text" id="editMembership" style="width: 100%; padding: 10px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.05); color: #f1f5f9; font-family: 'Manrope', sans-serif;" placeholder="e.g., Chamber of Commerce, Rotary Club">
+                    </div>
+                    <div style="grid-column: 1 / -1;">
+                        <label style="display: block; margin-bottom: 5px; font-size: 0.9em; color: #94a3b8;">Notes</label>
+                        <textarea id="editNotes" style="width: 100%; padding: 10px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.05); color: #f1f5f9; font-family: 'Manrope', sans-serif; min-height: 60px;" placeholder="Any additional notes"></textarea>
+                    </div>
+                </div>
+
+                <div style="margin-top: 20px; padding: 15px; background: rgba(251, 191, 36, 0.1); border-radius: 8px; border: 1px solid rgba(251, 191, 36, 0.3);">
+                    <div style="color: #fbbf24; font-size: 0.9em; font-weight: 600; margin-bottom: 5px;">💡 Important:</div>
+                    <div style="color: #cbd5e1; font-size: 0.85em;">
+                        • Update any field above - all are editable<br>
+                        • Leave blank to keep existing value<br>
+                        • Changes will be saved when you submit the form below
+                    </div>
+                </div>
+            `;
+            
+            // Insert after member ID section
+            const memberIdSection = document.querySelector('.member-id-section');
+            memberIdSection.parentNode.insertBefore(editSection, memberIdSection.nextSibling);
+
+            // Pre-fill ALL edit fields with existing data
+            const getValue = (possibleKeys) => {
+                for (const key of possibleKeys) {
+                    if (member[key] && member[key].trim && member[key].trim()) {
+                        return member[key].trim();
+                    }
+                    if (member[key] && !member[key].trim) {
+                        return member[key];
+                    }
+                }
+                return '';
+            };
+
+            setTimeout(() => {
+                document.getElementById('editName').value = getValue(['Name', 'name']);
+                document.getElementById('editGotra').value = getValue(['Gotra', 'gotra']);
+                document.getElementById('editDOB').value = getValue(['Date of Birth', 'date of birth', 'DOB']);
+                document.getElementById('editPlaceOfBirth').value = getValue(['Place of Birth', 'place of birth']);
+                document.getElementById('editSex').value = getValue(['Sex', 'sex', 'Gender']);
+                document.getElementById('editFatherName').value = getValue(['Father\'s Name', 'father\'s name', 'Father Name', 'Fathers Name']);
+                document.getElementById('editNativePlace').value = getValue(['Native Place in Rajasthan', 'native place in rajasthan', 'Native Place']);
+                document.getElementById('editEducation').value = getValue(['Educational Qualification', 'educational qualification', 'Education']);
+                document.getElementById('editOccupation').value = getValue(['Occupation', 'occupation']);
+                document.getElementById('editMaritalStatus').value = getValue(['Married/Unmarried', 'married/unmarried', 'Marital Status']);
+                document.getElementById('editDateOfMarriage').value = getValue(['Date of Marriage', 'date of marriage']);
+                document.getElementById('editSpouseName').value = getValue(['Spouse Name', 'spouse name']);
+                document.getElementById('editSpouseBusiness').value = getValue(['Spouse Business/Profession', 'spouse business/profession', 'Spouse Business']);
+                document.getElementById('editSpouseDOB').value = getValue(['Spouse DOB', 'spouse dob', 'Spouse Date of Birth']);
+                document.getElementById('editWhatsApp').value = getValue(['Mobile Number', 'mobile number', 'Phone', 'phone', 'WhatsApp']);
+                document.getElementById('editEmail').value = getValue(['Email', 'email']);
+                document.getElementById('editAddress').value = getValue(['Residential Address', 'residential address', 'Address']);
+                document.getElementById('editCity').value = getValue(['City', 'city']);
+                document.getElementById('editState').value = getValue(['State', 'state']);
+                document.getElementById('editPincode').value = getValue(['Pincode', 'pincode', 'PIN']);
+                document.getElementById('editMembership').value = getValue(['Membership in Other Associations', 'membership in other associations', 'Membership']);
+                document.getElementById('editNotes').value = getValue(['Notes', 'notes']);
+            }, 100);
+        }
+
+        function toggleEmploymentFields() {
+            const type = document.getElementById('employmentType').value;
+            document.getElementById('jobFields').classList.remove('show');
+            document.getElementById('businessFields').classList.remove('show');
+
+            if (type === 'Job') {
+                document.getElementById('jobFields').classList.add('show');
+            } else if (type === 'Business' || type === 'Self-Employed') {
+                document.getElementById('businessFields').classList.add('show');
+            }
+        }
+
+        function toggleChildrenFields() {
+            const hasChildren = document.querySelector('input[name="hasChildren"]:checked')?.value;
+            const countField = document.getElementById('childrenCountField');
+            
+            if (hasChildren === 'Yes') {
+                countField.classList.add('show');
+            } else {
+                countField.classList.remove('show');
+                document.getElementById('childInputsContainer').innerHTML = '';
+                document.getElementById('childInputsContainer').classList.remove('show');
+            }
+        }
+
+        function showChildInputs() {
+            const count = parseInt(document.getElementById('childrenCount').value) || 0;
+            const container = document.getElementById('childInputsContainer');
+            container.innerHTML = '';
+
+            if (count > 0) {
+                container.classList.add('show');
+                
+                for (let i = 1; i <= count; i++) {
+                    const childDiv = document.createElement('div');
+                    childDiv.className = 'child-entry';
+                    childDiv.innerHTML = `
+                        <div class="child-header">Child ${i}</div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" name="child${i}Name" placeholder="Child's name">
+                            </div>
+                            <div class="form-group">
+                                <label>Date of Birth</label>
+                                <input type="date" name="child${i}DOB">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" id="child${i}Male" name="child${i}Gender" value="Male">
+                                    <label for="child${i}Male">Male</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="child${i}Female" name="child${i}Gender" value="Female">
+                                    <label for="child${i}Female">Female</label>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(childDiv);
+                }
+            } else {
+                container.classList.remove('show');
+            }
+        }
+
+        function previewPhoto(event) {
+            const file = event.target.files[0];
+            if (file) {
+                if (file.size > 2 * 1024 * 1024) {
+                    alert('File too large. Maximum 2MB allowed.');
+                    event.target.value = '';
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('photoImg').src = e.target.result;
+                    document.getElementById('photoPreview').classList.add('show');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        async function compressPhoto(file) {
+            return new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.onload = function() {
+                        const canvas = document.createElement('canvas');
+                        let width = img.width;
+                        let height = img.height;
+                        const maxSize = 400;
+
+                        if (width > height && width > maxSize) {
+                            height *= maxSize / width;
+                            width = maxSize;
+                        } else if (height > maxSize) {
+                            width *= maxSize / height;
+                            height = maxSize;
+                        }
+
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+                        resolve(canvas.toDataURL('image/jpeg', 0.7));
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        document.getElementById('memberForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const memberIdValue = document.getElementById('memberId').value;
+            if (!memberIdValue) {
+                showError('Please look up your Member ID first', 'ID Required');
+                return;
+            }
+
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+
+            const formData = new FormData(this);
+            
+            // Compress and add photo if provided
+            let photoData = '';
+            const photoFile = document.getElementById('photo').files[0];
+            if (photoFile) {
+                photoData = await compressPhoto(photoFile);
+            }
+
+            // Collect children data
+            const childrenCount = parseInt(document.getElementById('childrenCount')?.value) || 0;
+            const childrenData = [];
+            for (let i = 1; i <= childrenCount; i++) {
+                const name = formData.get(`child${i}Name`);
+                const dob = formData.get(`child${i}DOB`);
+                const gender = formData.get(`child${i}Gender`);
+                if (name || dob || gender) {
+                    childrenData.push({ name, dob, gender });
+                }
+            }
+
+            const data = {
+                memberId: memberIdValue,
+                // ALL edited basic information fields
+                name: document.getElementById('editName') ? document.getElementById('editName').value : '',
+                gotra: document.getElementById('editGotra') ? document.getElementById('editGotra').value : '',
+                dateOfBirth: document.getElementById('editDOB') ? document.getElementById('editDOB').value : '',
+                placeOfBirth: document.getElementById('editPlaceOfBirth') ? document.getElementById('editPlaceOfBirth').value : '',
+                sex: document.getElementById('editSex') ? document.getElementById('editSex').value : '',
+                fatherName: document.getElementById('editFatherName') ? document.getElementById('editFatherName').value : '',
+                nativePlaceRajasthan: document.getElementById('editNativePlace') ? document.getElementById('editNativePlace').value : '',
+                educationalQualification: document.getElementById('editEducation') ? document.getElementById('editEducation').value : '',
+                occupation: document.getElementById('editOccupation') ? document.getElementById('editOccupation').value : '',
+                maritalStatus: document.getElementById('editMaritalStatus') ? document.getElementById('editMaritalStatus').value : '',
+                dateOfMarriage: document.getElementById('editDateOfMarriage') ? document.getElementById('editDateOfMarriage').value : '',
+                spouseName: document.getElementById('editSpouseName') ? document.getElementById('editSpouseName').value : '',
+                spouseBusiness: document.getElementById('editSpouseBusiness') ? document.getElementById('editSpouseBusiness').value : '',
+                spouseDOB: document.getElementById('editSpouseDOB') ? document.getElementById('editSpouseDOB').value : '',
+                whatsappPhone: document.getElementById('editWhatsApp') ? document.getElementById('editWhatsApp').value : '',
+                communicationEmail: document.getElementById('editEmail') ? document.getElementById('editEmail').value : '',
+                residentialAddress: document.getElementById('editAddress') ? document.getElementById('editAddress').value : '',
+                city: document.getElementById('editCity') ? document.getElementById('editCity').value : '',
+                state: document.getElementById('editState') ? document.getElementById('editState').value : '',
+                pincode: document.getElementById('editPincode') ? document.getElementById('editPincode').value : '',
+                membershipAssociations: document.getElementById('editMembership') ? document.getElementById('editMembership').value : '',
+                notes: document.getElementById('editNotes') ? document.getElementById('editNotes').value : '',
+                // Additional form data
+                photo: photoData,
+                professionalSkills: formData.get('skills'),
+                areasOfInterest: formData.get('interests'),
+                hobbies: formData.get('hobbies'),
+                instagram: formData.get('instagram'),
+                linkedin: formData.get('linkedin'),
+                employmentType: formData.get('employmentType'),
+                companyName: formData.get('companyName'),
+                designation: formData.get('designation'),
+                businessName: formData.get('businessName'),
+                businessAddress: formData.get('businessAddress'),
+                hasChildren: formData.get('hasChildren'),
+                childrenCount: childrenCount,
+                children: JSON.stringify(childrenData),
+                profileCompleted: 'Yes',
+                lastUpdated: new Date().toISOString().split('T')[0],
+                timestamp: new Date().toISOString()
+            };
+
+            // Send to Google Sheets
+            const result = await sendToGoogleSheets(data);
+            
+            submitBtn.textContent = 'Submit Registration';
+            submitBtn.disabled = false;
+
+            if (result.success) {
+                hideError();
+                document.getElementById('successMessage').classList.add('show');
+                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+                this.style.display = 'none';
+            } else {
+                showError('Failed to save. Please try again or contact 9710220344', 'Submission Error');
+            }
+        });
+
+        async function sendToGoogleSheets(data) {
+            if (!ENABLE_GOOGLE_SHEETS || GOOGLE_SHEETS_URL === 'PASTE_SUBMISSIONS_WEB_APP_URL_HERE') {
+                console.error('Google Sheets not configured');
+                return { success: false };
+            }
+
+            try {
+                await fetch(GOOGLE_SHEETS_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                return { success: true };
+            } catch (error) {
+                console.error('Submission error:', error);
+                return { success: false };
+            }
+        }
+
+        function showError(message, title = 'Error') {
+            document.getElementById('errorTitle').textContent = title;
+            document.getElementById('errorText').textContent = message;
+            document.getElementById('errorMessage').classList.add('show');
+            document.getElementById('successMessage').classList.remove('show');
+            document.getElementById('errorMessage').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function hideError() {
+            document.getElementById('errorMessage').classList.remove('show');
+        }
+    </script>
+</body>
+</html>
