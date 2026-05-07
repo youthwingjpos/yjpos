@@ -485,21 +485,35 @@
 
                 <!-- Photo Upload -->
                 <div class="photo-upload-section">
-                    <label for="photo">Upload Your Photo <span class="required">*</span></label>
-                    <input type="file" id="photo" accept="image/*" onchange="previewPhoto(event)" required>
-                    <div class="help-text">Accepted formats: JPG, PNG (Max 10MB). Photo will be compressed before saving.</div>
-                    <div class="photo-preview" id="photoPreview">
-                        <img id="photoImg" src="" alt="Preview">
+                    <label for="photo">Your Photo</label>
+                    <div id="existingPhotoSection" style="display: none; background: rgba(16, 185, 129, 0.1); padding: 15px; border-radius: 8px; margin-bottom: 10px;">
+                        <div style="color: #10b981; font-weight: 600; margin-bottom: 10px;">✓ Photo already uploaded</div>
+                        <a id="existingPhotoLink" href="#" target="_blank" style="color: #3b82f6; text-decoration: underline;">View your uploaded photo</a>
+                        <div style="color: #94a3b8; font-size: 0.9em; margin-top: 5px;">Contact support at 9710220344 to update your photo</div>
+                    </div>
+                    <div id="photoUploadSection">
+                        <input type="file" id="photo" accept="image/*" onchange="previewPhoto(event)">
+                        <div class="help-text">Accepted formats: JPG, PNG (Max 10MB). Photo will be compressed before saving.</div>
+                        <div class="photo-preview" id="photoPreview">
+                            <img id="photoImg" src="" alt="Preview">
+                        </div>
                     </div>
                 </div>
 
                 <!-- Aadhar Upload -->
                 <div class="photo-upload-section" style="margin-top: 20px;">
-                    <label for="aadhar">Upload Aadhar Card <span class="required">*</span></label>
-                    <input type="file" id="aadhar" accept="image/*,.pdf" onchange="previewAadhar(event)" required>
-                    <div class="help-text">Accepted formats: PDF, JPG, PNG (Max 10MB). Will be securely stored.</div>
-                    <div class="photo-preview" id="aadharPreview">
-                        <div id="aadharFileName" style="color: #10b981; font-weight: 600; padding: 10px;"></div>
+                    <label for="aadhar">Your Aadhar Card</label>
+                    <div id="existingAadharSection" style="display: none; background: rgba(16, 185, 129, 0.1); padding: 15px; border-radius: 8px; margin-bottom: 10px;">
+                        <div style="color: #10b981; font-weight: 600; margin-bottom: 10px;">✓ Aadhar already uploaded</div>
+                        <a id="existingAadharLink" href="#" target="_blank" style="color: #3b82f6; text-decoration: underline;">View your uploaded Aadhar</a>
+                        <div style="color: #94a3b8; font-size: 0.9em; margin-top: 5px;">Contact support at 9710220344 to update your Aadhar</div>
+                    </div>
+                    <div id="aadharUploadSection">
+                        <input type="file" id="aadhar" accept="image/*,.pdf" onchange="previewAadhar(event)">
+                        <div class="help-text">Accepted formats: PDF, JPG, PNG (Max 10MB).</div>
+                        <div class="photo-preview" id="aadharPreview">
+                            <div id="aadharFileName" style="color: #10b981; font-weight: 600; padding: 10px;"></div>
+                        </div>
                     </div>
                 </div>
 
@@ -937,6 +951,32 @@
                 document.getElementById('editPincode').value = getValue(['Pincode', 'pincode', 'PIN']);
                 document.getElementById('editMembership').value = getValue(['Membership in Other Associations', 'membership in other associations', 'Membership']);
                 document.getElementById('editNotes').value = getValue(['Notes', 'notes']);
+                
+                // Check for existing Photo and Aadhar
+                const photoUrl = getValue(['Photo URL', 'photo url', 'PhotoURL']);
+                const aadharUrl = getValue(['Aadhar Card URL', 'Aadhar URL', 'aadhar url', 'AadharURL']);
+                
+                if (photoUrl && photoUrl.length > 0) {
+                    // Photo already exists - show link, hide upload
+                    document.getElementById('existingPhotoSection').style.display = 'block';
+                    document.getElementById('existingPhotoLink').href = photoUrl;
+                    document.getElementById('photoUploadSection').style.display = 'none';
+                } else {
+                    // No photo - show upload
+                    document.getElementById('existingPhotoSection').style.display = 'none';
+                    document.getElementById('photoUploadSection').style.display = 'block';
+                }
+                
+                if (aadharUrl && aadharUrl.length > 0) {
+                    // Aadhar already exists - show link, hide upload
+                    document.getElementById('existingAadharSection').style.display = 'block';
+                    document.getElementById('existingAadharLink').href = aadharUrl;
+                    document.getElementById('aadharUploadSection').style.display = 'none';
+                } else {
+                    // No aadhar - show upload
+                    document.getElementById('existingAadharSection').style.display = 'none';
+                    document.getElementById('aadharUploadSection').style.display = 'block';
+                }
             }, 100);
         }
 
