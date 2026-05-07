@@ -485,11 +485,21 @@
 
                 <!-- Photo Upload -->
                 <div class="photo-upload-section">
-                    <label for="photo">Upload Your Photo</label>
-                    <input type="file" id="photo" accept="image/*" onchange="previewPhoto(event)">
-                    <div class="help-text">Accepted formats: JPG, PNG (Max 2MB). Photo will be compressed before saving.</div>
+                    <label for="photo">Upload Your Photo <span class="required">*</span></label>
+                    <input type="file" id="photo" accept="image/*" onchange="previewPhoto(event)" required>
+                    <div class="help-text">Accepted formats: JPG, PNG (Max 10MB). Photo will be compressed before saving.</div>
                     <div class="photo-preview" id="photoPreview">
                         <img id="photoImg" src="" alt="Preview">
+                    </div>
+                </div>
+
+                <!-- Aadhar Upload -->
+                <div class="photo-upload-section" style="margin-top: 20px;">
+                    <label for="aadhar">Upload Aadhar Card <span class="required">*</span></label>
+                    <input type="file" id="aadhar" accept="image/*,.pdf" onchange="previewAadhar(event)" required>
+                    <div class="help-text">Accepted formats: PDF, JPG, PNG (Max 10MB). Will be securely stored.</div>
+                    <div class="photo-preview" id="aadharPreview">
+                        <div id="aadharFileName" style="color: #10b981; font-weight: 600; padding: 10px;"></div>
                     </div>
                 </div>
 
@@ -692,9 +702,23 @@
                 return;
             }
 
+            // Normalize Member ID - handle "1", "01", "001" formats
+            let normalizedInput = memberIdInput;
+            if (/^\d+$/.test(memberIdInput)) {
+                normalizedInput = memberIdInput.padStart(3, '0');
+            }
+
             const member = memberDatabase.find(m => {
                 const id = m['Member ID'] || m['member id'] || m['MemberID'];
-                return id && id.toString().trim() === memberIdInput;
+                if (!id) return false;
+                
+                const idStr = id.toString().trim();
+                const inputStr = memberIdInput.toString().trim();
+                const normalizedInputStr = normalizedInput.toString().trim();
+                
+                // Match any format
+                return idStr === inputStr || idStr === normalizedInputStr || 
+                       parseInt(idStr) === parseInt(inputStr);
             });
 
             if (!member) {
@@ -702,8 +726,16 @@
                 return;
             }
 
+            // CHECK EDIT LOCK - Profile Completed
+            const profileCompleted = member['Profile Completed'] || member['profile completed'] || member['ProfileCompleted'] || '';
+            
+            if (profileCompleted.toString().toLowerCase() === 'yes') {
+                alert('⚠️ You have already submitted your profile.\n\nYour profile is complete and locked.\n\nTo make changes, please contact support at:\n📞 9710220344');
+                return;
+            }
+
             displayMemberInfo(member);
-            document.getElementById('memberId').value = memberIdInput;
+            document.getElementById('memberId').value = member['Member ID'] || memberIdInput;
         }
 
         function displayMemberInfo(member) {
@@ -980,8 +1012,8 @@
         function previewPhoto(event) {
             const file = event.target.files[0];
             if (file) {
-                if (file.size > 2 * 1024 * 1024) {
-                    alert('File too large. Maximum 2MB allowed.');
+                if (file.size > 10 * 1024 * 1024) {
+                    alert('File too large. Maximum 10MB allowed.');
                     event.target.value = '';
                     return;
                 }
@@ -993,6 +1025,36 @@
                 };
                 reader.readAsDataURL(file);
             }
+        }
+
+        function previewAadhar(event) {
+            const file = event.target.files[0];
+            if (file) {
+                if (file.size > 10 * 1024 * 1024) {
+                    alert('File too large. Maximum 10MB allowed.');
+                    event.target.value = '';
+                    return;
+                }
+                
+                const fileName = document.getElementById('aadharFileName');
+                const fileSize = (file.size / 1024).toFixed(0);
+                fileName.textContent = '✓ ' + file.name + ' (' + fileSize + ' KB)';
+                document.getElementById('aadharPreview').classList.add('show');
+            }
+        }
+
+        async function compressAadhar(file) {
+            // If PDF, return as base64
+            if (file.type === 'application/pdf') {
+                return new Promise((resolve) => {
+                    const reader = new FileReader();
+                    reader.onload = (e) => resolve(e.target.result);
+                    reader.readAsDataURL(file);
+                });
+            }
+            
+            // If image, compress like photo
+            return compressPhoto(file);
         }
 
         async function compressPhoto(file) {
@@ -1048,6 +1110,13 @@
                 photoData = await compressPhoto(photoFile);
             }
 
+            // Compress and add Aadhar if provided
+            let aadharData = '';
+            const aadharFile = document.getElementById('aadhar').files[0];
+            if (aadharFile) {
+                aadharData = await compressAadhar(aadharFile);
+            }
+
             // Collect children data
             const childrenCount = parseInt(document.getElementById('childrenCount')?.value) || 0;
             const childrenData = [];
@@ -1087,6 +1156,7 @@
                 notes: document.getElementById('editNotes') ? document.getElementById('editNotes').value : '',
                 // Additional form data
                 photo: photoData,
+                aadhar: aadharData,
                 professionalSkills: formData.get('skills'),
                 areasOfInterest: formData.get('interests'),
                 hobbies: formData.get('hobbies'),
