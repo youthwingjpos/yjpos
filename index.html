@@ -450,8 +450,8 @@
             </div>
 
             <div class="contact-support">
-                <div>For Membership Support</div>
-                <div class="contact-number">📞 9710220344</div>
+                <div>For Support Contact Kuldeep</div>
+                <div class="contact-number">📞 7010000267</div>
             </div>
         </div>
 
@@ -489,7 +489,7 @@
                     <div id="existingPhotoSection" style="display: none; background: rgba(16, 185, 129, 0.1); padding: 15px; border-radius: 8px; margin-bottom: 10px;">
                         <div style="color: #10b981; font-weight: 600; margin-bottom: 10px;">✓ Photo already uploaded</div>
                         <a id="existingPhotoLink" href="#" target="_blank" style="color: #3b82f6; text-decoration: underline;">View your uploaded photo</a>
-                        <div style="color: #94a3b8; font-size: 0.9em; margin-top: 5px;">Contact support at 9710220344 to update your photo</div>
+                        <div style="color: #94a3b8; font-size: 0.9em; margin-top: 5px;">Contact support at 7010000267 to update your photo</div>
                     </div>
                     <div id="photoUploadSection">
                         <input type="file" id="photo" accept="image/*" onchange="previewPhoto(event)">
@@ -506,7 +506,7 @@
                     <div id="existingAadharSection" style="display: none; background: rgba(16, 185, 129, 0.1); padding: 15px; border-radius: 8px; margin-bottom: 10px;">
                         <div style="color: #10b981; font-weight: 600; margin-bottom: 10px;">✓ Aadhar already uploaded</div>
                         <a id="existingAadharLink" href="#" target="_blank" style="color: #3b82f6; text-decoration: underline;">View your uploaded Aadhar</a>
-                        <div style="color: #94a3b8; font-size: 0.9em; margin-top: 5px;">Contact support at 9710220344 to update your Aadhar</div>
+                        <div style="color: #94a3b8; font-size: 0.9em; margin-top: 5px;">Contact support at 7010000267 to update your Aadhar</div>
                     </div>
                     <div id="aadharUploadSection">
                         <input type="file" id="aadhar" accept="image/*,.pdf" onchange="previewAadhar(event)">
@@ -624,8 +624,8 @@
         // ============================================================
         // GOOGLE SHEETS CONFIGURATION
         // ============================================================
-        const MEMBER_DATA_SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS9LBv8dQbADv6EgZFhpcZM8Nw0xNA5w0wxZNwKBqewz4SSfnFk4vr9dq-mT36-IIKNRDO6q8RsqON-/pub?output=csv';
-        const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxDIY6lIKDqzWZkH3j8cjk3UF7RbMFnS66ETYda4W9LWqVMwt1hMU7KzJh3Ef9yZWMB/exec';
+        const MEMBER_DATA_SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTRWZTl6FKePPE58wM1QrmP58Iga5wSY96ILalZikzbomhMzMeJCaXt_vUpTo0pYt7nzGmW6Tpy_xsr/pub?output=csv';
+        const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzUOXESpoEb-QEq7X7hl0CHRHZNy9IWlI9WUHUxa5FYRJxirjx_1Wn9dt6AxdvFnw4H1Q/exechttps://script.google.com/macros/s/AKfycbzUOXESpoEb-QEq7X7hl0CHRHZNy9IWlI9WUHUxa5FYRJxirjx_1Wn9dt6AxdvFnw4H1Q/exec';
         const ENABLE_GOOGLE_SHEETS = true;
         // ============================================================
 
@@ -639,7 +639,7 @@
 
         async function loadMemberDataFromGoogleSheets() {
             if (MEMBER_DATA_SHEET_URL === 'PASTE_MEMBER_DATABASE_CSV_URL_HERE') {
-                showError('Database not configured. Please contact support at 9710220344', 'Configuration Error');
+                showError('Database not configured. Please contact support at 7010000267', 'Configuration Error');
                 return;
             }
 
@@ -654,7 +654,7 @@
                 
             } catch (error) {
                 console.error('Database error:', error);
-                showError('Failed to load database. Please refresh or contact support at 9710220344', 'Loading Error');
+                showError('Failed to load database. Please refresh or contact support at 7010000267', 'Loading Error');
             }
         }
 
@@ -712,7 +712,7 @@
             }
 
             if (memberDatabase.length === 0) {
-                showError('Database not loaded. Please refresh the page or contact 9710220344', 'Database Error');
+                showError('Database not loaded. Please refresh the page or contact 7010000267', 'Database Error');
                 return;
             }
 
@@ -723,20 +723,20 @@
             }
 
             const member = memberDatabase.find(m => {
-                const id = m['Member ID'] || m['member id'] || m['MemberID'];
+                const id = m['Member ID'] || m['member id'] || m['MemberID'] || m['UID'] || m['uid'];
                 if (!id) return false;
                 
                 const idStr = id.toString().trim();
                 const inputStr = memberIdInput.toString().trim();
                 const normalizedInputStr = normalizedInput.toString().trim();
                 
-                // Match any format
+                // Match any format: 1001, 01, 1, etc.
                 return idStr === inputStr || idStr === normalizedInputStr || 
                        parseInt(idStr) === parseInt(inputStr);
             });
 
             if (!member) {
-                showError(`Member ID "${memberIdInput}" not found. Please verify your ID or contact 9710220344`, 'Not Found');
+                showError(`Member ID "${memberIdInput}" not found. Please verify your ID or contact 7010000267`, 'Not Found');
                 return;
             }
 
@@ -744,7 +744,7 @@
             const profileCompleted = member['Profile Completed'] || member['profile completed'] || member['ProfileCompleted'] || '';
             
             if (profileCompleted.toString().toLowerCase() === 'yes') {
-                alert('⚠️ You have already submitted your profile.\n\nYour profile is complete and locked.\n\nTo make changes, please contact support at:\n📞 9710220344');
+                alert('⚠️ You have already submitted your profile.\n\nYour profile is complete and locked.\n\nTo make changes, please contact support at:\n📞 7010000267');
                 return;
             }
 
@@ -929,27 +929,34 @@
             };
 
             setTimeout(() => {
+                // Map CSV columns to form fields
                 document.getElementById('editName').value = getValue(['Name', 'name']);
-                document.getElementById('editGotra').value = getValue(['Gotra', 'gotra']);
+                document.getElementById('editGotra').value = getValue(['Surname', 'surname', 'Gotra', 'gotra']); // Surname = Gotra
                 document.getElementById('editDOB').value = getValue(['Date of Birth', 'date of birth', 'DOB']);
                 document.getElementById('editPlaceOfBirth').value = getValue(['Place of Birth', 'place of birth']);
                 document.getElementById('editSex').value = getValue(['Sex', 'sex', 'Gender']);
-                document.getElementById('editFatherName').value = getValue(['Father\'s Name', 'father\'s name', 'Father Name', 'Fathers Name']);
-                document.getElementById('editNativePlace').value = getValue(['Native Place in Rajasthan', 'native place in rajasthan', 'Native Place']);
+                document.getElementById('editFatherName').value = getValue(['Father Name', 'father name', "Father's Name"]);
+                document.getElementById('editNativePlace').value = getValue(['Native', 'native', 'Native Place', 'Native Place in Rajasthan']);
                 document.getElementById('editEducation').value = getValue(['Educational Qualification', 'educational qualification', 'Education']);
                 document.getElementById('editOccupation').value = getValue(['Occupation', 'occupation']);
-                document.getElementById('editMaritalStatus').value = getValue(['Married/Unmarried', 'married/unmarried', 'Marital Status']);
+                document.getElementById('editMaritalStatus').value = getValue(['Marital Status', 'marital status', 'Married/Unmarried']);
                 document.getElementById('editDateOfMarriage').value = getValue(['Date of Marriage', 'date of marriage']);
                 document.getElementById('editSpouseName').value = getValue(['Spouse Name', 'spouse name']);
-                document.getElementById('editSpouseBusiness').value = getValue(['Spouse Business/Profession', 'spouse business/profession', 'Spouse Business']);
+                document.getElementById('editSpouseBusiness').value = getValue(['Spouse Business', 'spouse business', 'Spouse Business/Profession']);
                 document.getElementById('editSpouseDOB').value = getValue(['Spouse DOB', 'spouse dob', 'Spouse Date of Birth']);
-                document.getElementById('editWhatsApp').value = getValue(['Mobile Number', 'mobile number', 'Phone', 'phone', 'WhatsApp']);
+                
+                // Mobile from CSV maps to WhatsApp
+                document.getElementById('editWhatsApp').value = getValue(['Mobile', 'mobile', 'WhatsApp Number', 'Mobile Number']);
+                
                 document.getElementById('editEmail').value = getValue(['Email', 'email']);
-                document.getElementById('editAddress').value = getValue(['Residential Address', 'residential address', 'Address']);
+                
+                // Area from CSV can go to Address
+                document.getElementById('editAddress').value = getValue(['Address', 'address', 'Area', 'area', 'Residential Address']);
+                
                 document.getElementById('editCity').value = getValue(['City', 'city']);
                 document.getElementById('editState').value = getValue(['State', 'state']);
                 document.getElementById('editPincode').value = getValue(['Pincode', 'pincode', 'PIN']);
-                document.getElementById('editMembership').value = getValue(['Membership in Other Associations', 'membership in other associations', 'Membership']);
+                document.getElementById('editMembership').value = getValue(['Membership', 'membership', 'Membership in Other Associations']);
                 document.getElementById('editNotes').value = getValue(['Notes', 'notes']);
                 
                 // Check for existing Photo and Aadhar
@@ -1227,7 +1234,7 @@
                 document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
                 this.style.display = 'none';
             } else {
-                showError('Failed to save. Please try again or contact 9710220344', 'Submission Error');
+                showError('Failed to save. Please try again or contact 7010000267', 'Submission Error');
             }
         });
 
