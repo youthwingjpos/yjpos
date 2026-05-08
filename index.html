@@ -427,9 +427,9 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="org-name">YOUTH WING</div>
-            <h1>Jaitaran Pattu Oswal Sangh</h1>
-            <p class="subtitle">Member Registration Form</p>
+            <div class="org-name">YOUTH WING / YUVA PARISHAD</div>
+            <h1>SRI JAITARANPATTI OSWAL SANGH, CHENNAI</h1>
+            <p class="subtitle">(JPOS) - Member Registration</p>
             
             <div class="leadership">
                 <div class="leadership-title">Leadership Team</div>
@@ -478,10 +478,8 @@
             </div>
 
             <!-- Registration Form -->
-            <form id="memberForm">
+            <form id="memberForm" style="display: none;">
                 <input type="hidden" id="memberId" name="memberId">
-                
-                <div class="section-header">📝 Complete Your Profile</div>
 
                 <!-- Photo Upload -->
                 <div class="photo-upload-section">
@@ -754,6 +752,9 @@
 
         function displayMemberInfo(member) {
             hideError();
+            
+            // Show the form
+            document.getElementById('memberForm').style.display = 'block';
             
             // Go directly to edit section with ALL fields
             enableCompleteEdit(member);
